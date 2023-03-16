@@ -42,6 +42,11 @@ function validateForm(){
 
    let loanAmount = document.getElementById("loanAmount")
    let loanPurpose = document.getElementById("loanPurpose")
+   let firstName = document.getElementById("firstName")
+   let lastName = document.getElementById("lastName")
+
+
+   let regname = /^[a-zA-Z]+$/;
    let regAmt = /^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/;
    let regPur = "^\\s+[A-Za-z,;'\"\\s]+[.?!]$"
 
@@ -53,6 +58,18 @@ function validateForm(){
    else if(loanPurpose.value.trim() == "" || !regPur.test(loanPurpose.value)){
       loanPurpose.style.border = "solid 3px red";
       document.getElementById("loanPurposeError").style.visibility="visible";
+      return false;
+   }
+
+   else if(!regname.test(firstName.value) || firstName.value.trim() == ""){
+      firstName.style.border = "solid 3px red";
+      document.getElementById("firstnameError").style.visibility="visible";
+      return false;
+   }
+
+   else if(!regname.test(lastName.value) || lastName.value.trim() == ""){
+      lastName.style.border = "solid 3px red";
+      document.getElementById("lastnameError").style.visibility="visible";
       return false;
    }
    else{
