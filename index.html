@@ -11,16 +11,17 @@
 <body style="background-color: azure;">
 <div class="container" >
     <div class="row">
-        <div class="text-center" style="margin: 20px 0 0 30px ;">
+        <div class="text-center" style="margin: 20px 0 40px 0 ;">
             <img src="image/logo-original.png" alt="">
         </div>
         
-    <div class="col-lg-12 text-center" style="margin: 50px;">
-     <h3 style="font-weight:bold;">How much do you need</h3>
+        <!-- How much do you need  -->
+    <div class="col-lg-12 text-center" >
+     <h3 style="font-weight:bold; margin-bottom: 30px;">How much do you need</h3>
     </div>
 </div>
 
-    <form name="myform" action="successfull.html" onsubmit="return validateForm()" autocomplete="off"></form>
+    <form name="myform" action="successfull.html" onsubmit="return validateForm()" autocomplete="off">
     <div class="row">
         <div class="col-lg-4">
            <div class="form-group">
@@ -34,8 +35,6 @@
             required/>
             <span id="loanAmountError" style="color: red; visibility: hidden;" >*Write a valid Amount.</span>
             <br>
-            <br>
-           
            <div class="form-group">
             <label for="loanPurpose" style="margin: 0 0 10px 0; font-size: 20px;">Loan Purpose :</label>
             <input type="text"
@@ -47,11 +46,377 @@
             required/>
             <span id="loanPurposeError" style="color: red; visibility: hidden;" >*Write a valid Purpose.</span>
            </div>
+           <!-- <input type="submit" value="Submit"> -->
         </div>
     </div>
-</div>
-    
+
+ </div>
+ <br>
+ <!-- Tell me about yourself -->
+ <div class="row">
+    <div class="col-lg-12 text-center">
+        <h3 style="font-weight:bold; margin-bottom: 30px;">Tell Us About Yourself</h3>
     </div>
+ </div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" > First Name:</label>
+            <input type="text"
+            id="firstName"
+            name="firstname"
+            style="width:350px;"
+            placeholder="First Name"
+            maxlength="100"
+            class="form-group"
+            required />
+            <span id="firstnameError" style="color: red;visibility: hidden;">Invalid Name</span>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;"> Middle Name:</label>
+            <input type="text"
+            id="middelName"
+            name="middelname"
+            style="width:350px;"
+            placeholder="Middel Name"
+            maxlength="100"
+            class="form-group"
+             />
+            </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;"> Last Name:</label>
+            <input type="text"
+            id="lastName"
+            name="lastname"
+            style="width:350px;"
+            placeholder="Last Name"
+            maxlength="100"
+            class="form-group"
+            required />
+            <span id="lastnameError" style="color: red;visibility: hidden;">Invalid Last Name</span>
+        </div>
+    </div>
+ </div>
+
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >Date of Birth</label>
+            <input type="date"
+            id="DOB"
+            name="DOB"
+            style="width:350px;"
+            maxlength="100"
+            class="form-group"
+            required />
+            <span id="DOBError" style="color: red;visibility: hidden;">Invalid Date of Birth</span>
+
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;">Email</label>
+            <input type="email"
+            id="email"
+            name="email"
+            style="width:350px;"
+            placeholder="Email"
+            maxlength="100"
+            class="form-group"
+            required
+             /><span id="EmailError" style="color: red;visibility: hidden;">Invalid Email</span>
+            </div>
+    </div>
+    
+ </div>
+ <div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >Home Phone</label>
+            <input type="tel"
+            id="hPhone"
+            name="hPhone"
+            style="width:350px;"
+            placeholder="Phone No."
+            maxlength="10"
+            class="form-group"
+            required />
+            <span id="hPhoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;"> Mobile Phone</label>
+            <input type="tel"
+            id="mPhone"
+            name="mPhone"
+            style="width:350px;"
+            placeholder="Mobile Phone"
+            maxlength="10"
+            class="form-group"
+             required/>
+             <span id="phoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+            </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;"> SSN</label>
+            <input type="text"
+            id="SNN"
+            name="SNN"
+            style="width:350px;"
+            placeholder="e.g 123-12-1234"
+            maxlength="100"
+            class="form-group"
+            required />
+            <span id="SNNError" style="color: red;visibility: hidden;">Invalid SSN</span>
+        </div>
+    </div>
+ </div>
+<br>
+<!-- What is your home address  -->
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h3 style="font-weight:bold; margin-bottom: 30px;">What is your home address</h3>
+    </div>
+ </div>
+
+ <div class="row">
+    <div class="col-lg-4">
+       <div class="form-group">
+        <label for="loanAmount" style="margin: 0 0 10px 0; font-size: 20px;">Street Address 1</label>
+        <input type="text"
+        placeholder="Address"
+        class="form-group"
+        style="width:500px;"
+        id="address"
+        required/>
+        <span id="addressError" style="color: red; visibility: hidden;" >Invalid Address</span>
+        <br>
+       
+       <div class="form-group">
+        <label for="loanPurpose" style="margin: 0 0 10px 0; font-size: 20px;">Street Address 2</label>
+        <input type="text"
+        placeholder="Address"
+        class="form-group"
+        style="width:500px;"
+        id="address2"
+        maxlength="150"
+        />
+       </div>
+       <!-- <input type="submit" value="Submit"> -->
+    </div>
+</div>
+
+</div>
+<br>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >City</label>
+            <input type="text"
+        placeholder="e.g, jaipur"
+        class="form-group"
+        style="width:350px;"
+        id="address2"
+        maxlength="150"
+        />
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;">State</label>
+
+            <select name="sstate" tabindex="11" id="sstate" class="form-control" rel="addressResult" aria-invalid="true">
+                <option value="" selected="selected">Select State</option>
+                <option value="AL">AL - Alabama</option>
+                <option value="AK">AK - Alaska</option>
+                <option value="AS">AS - American Samoa</option>
+                <option value="AZ">AZ - Arizona</option>
+                <option value="AR">AR - Arkansas</option>
+                <option value="CA">CA - California</option>
+                <option value="CO">CO - Colorado</option>
+                <option value="CT">CT - Connecticut</option>
+                <option value="DE">DE - Delaware</option>
+                <option value="DC">DC - District of Columbia</option>
+                <option value="FM">FM - Federated States of Micronesia</option>
+                <option value="FL">FL - Florida</option>
+                <option value="GA">GA - Georgia</option>
+                <option value="GU">GU - Guam</option>
+                <option value="HI">HI - Hawaii</option>
+                <option value="ID">ID - Idaho</option>
+                <option value="IL">IL - Illinois</option>
+                <option value="IN">IN - Indiana</option>
+                <option value="IA">IA - Iowa</option>
+                <option value="KS">KS - Kansas</option>
+                <option value="KY">KY - Kentucky</option>
+                <option value="LA">LA - Louisiana</option>
+                <option value="ME">ME - Maine</option>
+                <option value="MH">MH - Marshall Islands</option>
+                <option value="MD">MD - Maryland</option>
+                <option value="MA">MA - Massachusetts</option>
+                <option value="MI">MI - Michigan</option>
+                <option value="MN">MN - Minnesota</option>
+                <option value="MS">MS - Mississippi</option>
+                <option value="MO">MO - Missouri</option>
+                <option value="MT">MT - Montana</option>
+                <option value="NE">NE - Nebraska</option>
+                <option value="NV">NV - Nevada</option>
+                <option value="NH">NH - New Hampshire</option>
+                <option value="NJ">NJ - New Jersey</option>
+                <option value="NM">NM - New Mexico</option>
+                <option value="NY">NY - New York</option>
+                <option value="NC">NC - North Carolina</option>
+                <option value="ND">ND - North Dakota</option>
+                <option value="MP">MP - Northern Mariana Islands</option>
+                <option value="OH">OH - Ohio</option>
+                <option value="OK">OK - Oklahoma</option>
+                <option value="OR">OR - Oregon</option>
+                <option value="PW">PW - Palau</option>
+                <option value="PA">PA - Pennsylvania</option>
+                <option value="PR">PR - Puerto Rico</option>
+                <option value="RI">RI - Rhode Island</option>
+                <option value="SC">SC - South Carolina</option>
+                <option value="SD">SD - South Dakota</option>
+                <option value="TN">TN - Tennessee</option>
+                <option value="TX">TX - Texas</option>
+                <option value="UT">UT - Utah</option>
+                <option value="VT">VT - Vermont</option>
+                <option value="VI">VI - Virgin Islands</option>
+                <option value="VA">VA - Virginia</option>
+                <option value="WA">WA - Washington</option>
+                <option value="WV">WV - West Virginia</option>
+                <option value="WI">WI - Wisconsin</option>
+                <option value="WY">WY - Wyoming</option>
+                <option value="AA">AA - Armed Forces Americas</option>
+                <option value="AE">AE - Armed Forces Europe</option>
+                <option value="AP">AP - Armed Forces Pacific</option>
+            </select><span id="stateError" style="color: red;visibility: hidden;">Invalid State</span>
+            </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;">ZIP</label>
+            <input type="text"
+            id="zip"
+            name="zip"
+            style="width:350px;"
+            placeholder="5 digit ZIP code"
+            maxlength="5"
+            class="form-group"
+            required
+             /><span id="zipError" style="color: red;visibility: hidden;">Invalid Zip</span>
+            </div>
+    </div>
+    
+ </div>
+ <div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >Residence Date</label>
+            <input type="date"
+            id="rNO"
+            name="rNO"
+            style="width:350px;"
+            placeholder="Residence Date"
+            class="form-group"
+             />
+            
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;">Residence Type</label>
+            <input type="text"
+            id="rtype"
+            name="rtype"
+            style="width:350px;"
+            placeholder="Residence Type"
+            maxlength="20"
+            class="form-group"
+            />
+            </div>
+    </div>
+    
+ </div>
+ <br>
+
+ <div class="row">
+    <div class="col-lg-12 text-center">
+        <h3 style="font-weight:bold; margin-bottom: 30px;">How much do you make</h3>
+    </div>
+ </div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >Annual Income</label>
+            <input type="text"
+            id="aIncome"
+            name="aIncome"
+            style="width:350px;"
+            placeholder="Income"
+            maxlength="40"
+            class="form-group"
+            required />
+            <span id="annualIncome" style="color: red;visibility: hidden;">Invalid Income Amount</span>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;"> Employment Type</label>
+            <input type="text"
+            id="EmployType"
+            name="EmployType"
+            style="width:350px;"
+            
+            maxlength="100"
+            class="form-group"
+             />
+            </div>
+    </div>
+    
+ </div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;" >Employer Name</label>
+            <input type="text"
+            id="empName"
+            name="empName"
+            style="width:350px;"
+            maxlength="100"
+            class="form-group"
+            required />
+            
+
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label style="margin: 0 0 10px 0; font-size: 20px;">Employer Phone</label>
+            <input type="tel"
+            id="ePhone"
+            name="ePhone"
+            style="width:350px;"
+            placeholder="Employment Type"
+            maxlength="100"
+            class="form-group"
+            required
+             />
+    </div>
+    
+ </div>
+</form>
+</div>
 
 
     <script src="validationscript.js"></script>

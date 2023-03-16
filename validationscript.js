@@ -40,8 +40,22 @@
 
 function validateForm(){
 
-   let loanA = document.getElementById("loanAmount").value
-   let loanP = document.getElementById("loanPurpose").value
-   let regAmt = / ^[0-9]+$/;
-   let regPur = /^[A-Za-z]+$/;
+   let loanAmount = document.getElementById("loanAmount")
+   let loanPurpose = document.getElementById("loanPurpose")
+   let regAmt = /^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/;
+   let regPur = "^\\s+[A-Za-z,;'\"\\s]+[.?!]$"
+
+   if(loanAmount.value.trim() == "" || !regAmt.test(loanAmount.value)){
+      loanAmount.style.border = "solid 3px red";
+      document.getElementById("loanAmountError").style.visibility="visible";
+      return false;
+   }
+   else if(loanPurpose.value.trim() == "" || !regPur.test(loanPurpose.value)){
+      loanPurpose.style.border = "solid 3px red";
+      document.getElementById("loanPurposeError").style.visibility="visible";
+      return false;
+   }
+   else{
+      return true;
+   }
 }
