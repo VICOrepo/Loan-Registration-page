@@ -30,11 +30,9 @@
             class="form-group"
             style="width:400px;"
             id="loanAmount"
-            onkeypress="return IsNumericlamount(event);"
-            onblur="currency();"
-            maxlength="12"
+            maxlength="6"
             required/>
-            <span id="loanAmountError" style="color: red;" >*Write a valid Amount.</span>
+            <span id="loanAmountError" style="color: red; visibility: hidden;" >*Write a valid Amount.</span>
             <br>
             <br>
            
@@ -45,11 +43,9 @@
             class="form-group"
             style="width:400px;"
             id="loanPurpose"
-            onkeypress="return (event);"
-            onblur="currency();"
             maxlength="150"
             required/>
-            <span id="loanPurposeError" style="color: red;" >*Write a valid Purpose.</span>
+            <span id="loanPurposeError" style="color: red; visibility: hidden;" >*Write a valid Purpose.</span>
            </div>
         </div>
     </div>
