@@ -127,6 +127,7 @@
             name="email"
             style="width:350px;"
             placeholder="Email"
+            onblur="emailValidation()"
             maxlength="100"
             class="form-group"
             required
@@ -158,6 +159,7 @@
             name="mPhone"
             style="width:350px;"
             placeholder="Mobile Phone"
+
             maxlength="10"
             class="form-group"
              required/>
@@ -172,7 +174,8 @@
             name="SNN"
             style="width:350px;"
             placeholder="e.g 123-12-1234"
-            maxlength="100"
+            maxlength="11"
+            onkeypress="mask(this,mssn)"
             class="form-group"
             required />
             <span id="SNNError" style="color: red;visibility: hidden;">Invalid SSN</span>
