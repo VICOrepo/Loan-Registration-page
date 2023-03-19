@@ -274,3 +274,54 @@ else {
 //   document.getElementById("zipError").style.display = ret ? "none" : "inline";
 //   return ret;
 // }
+function firstNameValidation(){
+   let firstName = document.getElementById("firstName")
+   if(firstName.value.trim() == ""){
+      document.getElementById("firstnameError").style.visibility="visible";
+      return false;
+   }
+   else{
+      document.getElementById("firstnameError").style.visibility="hidden";
+      return false;
+   }
+}
+
+function lastNameValidation(){
+   let firstName = document.getElementById("lastName")
+   if(firstName.value.trim() == ""){
+      document.getElementById("lastnameError").style.visibility="visible";
+      return false;
+   }
+   else{
+      document.getElementById("lastnameError").style.visibility="hidden";
+      return false;
+   }
+}
+
+
+var specialKeys = new Array();
+specialKeys.push(8); 
+function isAlphaFirstName(e){
+     document.getElementById("firstName").innerHTML = "";
+     var keyCode = e.which ? e.which : e.keyCode;
+     var ret =
+       (keyCode >= 65 && keyCode <= 90) ||
+       (keyCode >= 95 && keyCode <= 122) ||
+       specialKeys.indexOf(keyCode) != -1;
+     document.getElementById("firstnameError").style.display = ret ? "none" : "inline";
+     return ret;
+   }
+
+var specialKeys = new Array();
+specialKeys.push(8); 
+function isAlphaLastName(e){
+     document.getElementById("lastName").innerHTML = "";
+     var keyCode = e.which ? e.which : e.keyCode;
+     var ret =
+       (keyCode >= 65 && keyCode <= 90) ||
+       (keyCode >= 95 && keyCode <= 122) ||
+       specialKeys.indexOf(keyCode) != -1;
+     document.getElementById("lastnameError").style.display = ret ? "none" : "inline";
+     return ret;
+   }
+
