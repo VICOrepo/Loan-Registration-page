@@ -73,11 +73,10 @@
             style="width:350px;"
             placeholder="E.g Max"
             onblur="firstNameValidation()"
-            onclick="isAlphaFirstName(event)"
             maxlength="40"
             class="form-group"
             required />
-            <span id="firstnameError" style="color: red;visibility: hidden;">*Invalid Name</span>
+            <span id="firstnameError" style="color: red;visibility: hidden;">*Invalid first Name</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -102,7 +101,6 @@
             style="width:350px;"
             placeholder="E.g, Lax"
             onblur="lastNameValidation()"
-            onclick="isAlphaLastName(event)"
             maxlength="40"
             class="form-group"
             required />
@@ -137,7 +135,7 @@
             style="width:350px;"
             placeholder="E.g. sigma@info.co"
             onblur="emailValidation()"
-            maxlength="100"
+            maxlength="80"
             class="form-group"
             required
              /><span id="EmailError" style="color: red;visibility: hidden;">Invalid Email</span>
