@@ -30,7 +30,6 @@
             placeholder="Amount should be between $2,000 and $20,000"
             class="form-group"
             style="width:400px;"
-            onkeypress="isNumericValue(event)"
             id="loanAmount"
             onblur="loanAmountValidation()"
             maxlength="6"
@@ -151,9 +150,9 @@
             id="hPhone"
             name="hPhone"
             style="width:350px;"
-            placeholder="Phone No."
-            onblur="mobileValidation2(event)"
-            onkeypress="mobileMasking2()"
+            placeholder="e.g., (123) 456-7890"
+            onblur="homeMobileValidation()"
+            onkeypress="homeMobileMasking()"
             maxlength="10"
             class="form-group"
             required />
@@ -167,13 +166,13 @@
             id="mPhone"
             name="mPhone"
             style="width:350px;"
-            placeholder="Mobile Phone"
+            placeholder="e.g., (123) 456-7890"
+            onblur="mobileValidation()"
             onkeypress="mobileMasking()"
-            onblur="mobileValidation(event)"
             maxlength="10"
             class="form-group"
              required/>
-             <span id="phoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+             <span id="mphoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
             </div>
     </div>
     <div class="col-lg-4">
@@ -189,7 +188,7 @@
             onkeypress="mask(this,mssn)"
             class="form-group"
             required />
-            <span id="SNNError" style="color: red;visibility: hidden;">Invalid SSN</span>
+            <span id="SNNError" style="color: red;visibility: hidden;">*Invalid SSN</span>
         </div>
     </div>
  </div>
@@ -236,12 +235,13 @@
         <div class="form-group">
             <label style="margin: 0 0 10px 0; font-size: 20px;" >City</label>
             <input type="text"
+            id="city"
         placeholder="e.g, jaipur"
         class="form-group"
+        onblur="cityValidation()"
         style="width:350px;"
-        id="address2"
-        maxlength="150"
-        />
+        maxlength="30"
+       required /><span id="cityError" style="color: red;visibility: hidden;">*Invalid City</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -324,7 +324,6 @@
             style="width:350px;"
             placeholder="5 digit ZIP code"
             onblur="zipvalidation()"
-            onkeypress="isNumericZip(event)"
             maxlength="5"
             class="form-group"
             required
@@ -379,10 +378,11 @@
             name="aIncome"
             style="width:350px;"
             placeholder="Income"
+            onblur="incomeValidation()"
             maxlength="40"
             class="form-group"
             required />
-            <span id="annualIncome" style="color: red;visibility: hidden;">Invalid Income Amount</span>
+            <span id="annualIncome" style="color: red;visibility: hidden;">*Invalid Income Amount</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -422,12 +422,14 @@
             <input type="tel"
             id="ePhone"
             name="ePhone"
+            onkeypress="empMobileMasking()"
+            onblur="empMobileValidation()"
             style="width:350px;"
-            placeholder="Employment Type"
-            maxlength="100"
+            placeholder="e.g., (123) 456-7890"
+            maxlength="10"
             class="form-group"
             required
-             />
+             /><span id="empPhoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
              
     </div>
     

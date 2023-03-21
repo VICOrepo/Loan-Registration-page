@@ -105,28 +105,17 @@ function ssnValidation(){
 
 
 function loanAmountValidation(){
-      // let dollarUS = Intl.NumberFormat("en-US", {
-      //   style: "currency",
-      //   currency: "USD",
-      // });
-    
-      // // var currency = document.getElementById("loanAmount").value;
-    
-      // let loanAmount1 = document.getElementById("loanAmount").value;
-      // let loanAmount2 = loanAmount1.replace("$ ", "");
-      // let loanAmount = loanAmount2.replace(",", "");
-      // document.getElementById("loanAmount").value = dollarUS.format(loanAmount);  
-
-      let regAmt ="/^[0-9]*$/";
+      let loanAmount = document.getElementById("loanAmount")
+      let amount =/^[0-9]*$/;
 
    if(loanAmount.value.trim() == ""||loanAmount.value<2000 || loanAmount.value>20000){
       document.getElementById("loanAmountError").style.visibility = "visible";
       return false;
    }
-   // else if(!regAmt.test(loanAmount.value)){
-   //    document.getElementById("loanAmountError").style.visibility = "visible";
-   //    return false;
-   // }
+   else if(!loanAmount.value.match(amount)){
+      document.getElementById("loanAmountError").style.visibility = "visible";
+      return false;
+   }
    else{
       document.getElementById("loanAmountError").style.visibility = "hidden";
       return false;
@@ -135,15 +124,15 @@ function loanAmountValidation(){
 
 function isPurpose(){
    let loanPurpose = document.getElementById("loanPurpose");
-
-   let regPur = "/^[A-Za-z]+$/";
+   let purpose = /^[a-zA-Z ]*$/;
+   
    //console.log(!regPur.match(loanPurpose.value))
    if (loanPurpose.value.trim() == "") {
       //loanPurpose.style.border = "solid 3px red";
       document.getElementById("loanPurposeError").style.visibility = "visible";
       return false;
       }
-   else if(!regPur.match(loanPurpose.value)){
+   else if(!loanPurpose.value.match(purpose)){
       document.getElementById("loanPurposeError").style.visibility = "visible";
       return false;
    }
@@ -154,35 +143,25 @@ function isPurpose(){
    }
 }
 
-function mobileValidation2(e){
+function homeMobileValidation(e){
   
-let phone3 = document.getElementById("hPhone");
-if (phone3.value.trim() == "" || phone3.value.length<10) {
+let hPhone = document.getElementById("hPhone");
+let homePhone = /^[0-9]*$/;
+if (hPhone.value.trim() == "" ) {
    
    document.getElementById("hPhoneError").style.visibility = "visible";
    return false;
+   }
+   else if(!hPhone.value.match(homePhone)){
+      document.getElementById("hPhoneError").style.visibility = "visible";
+      return false;
    }
 else {
    document.getElementById("hPhoneError").style.visibility = "hidden";
    return false;
 }
 } 
-
-function mobileValidation(e){
-   // let pattern = "/^\d{10}$/"
- let phone1 = document.getElementById("mPhone");
- if (phone1.value.trim() == ""|| phone1.value.length<10) {
-    //loanPurpose.style.border = "solid 3px red";
-    document.getElementById("phoneError").style.visibility = "visible";
-    return false;
-    }
- else {
-    document.getElementById("phoneError").style.visibility = "hidden";
-    return false;
- }
- } 
-
-function mobileMasking2(){
+function homeMobileMasking(){
 
    let ele = document.getElementById("hPhone");
    ele = ele.value.split("-").join("-");
@@ -192,6 +171,26 @@ function mobileMasking2(){
    );
    document.getElementById("hPhone").value = finalVal;
  }
+
+
+function mobileValidation(){
+  
+ let mPhone = document.getElementById("mPhone");
+ let mobilePhone = /^[0-9]*$/;
+ if (mPhone.value.trim() == "") {
+   
+    document.getElementById("mphoneError").style.visibility = "visible";
+    return false;
+    }
+    else if(!mPhone.value.match(mobilePhone)){
+      document.getElementById("mphoneError").style.visibility = "visible";
+      return false;
+   }
+ else {
+    document.getElementById("mphoneError").style.visibility = "hidden";
+    return false;
+ }
+ } 
 
  function mobileMasking(){
 
@@ -218,28 +217,25 @@ function mobileMasking2(){
  }
 
  function zipvalidation(){
+
 let zip = document.getElementById("zip")
+let zipVal = /^[0-9]*$/;
 
 if (zip.value.trim() == ""|| zip.value.length<5) {
    //loanPurpose.style.border = "solid 3px red";
    document.getElementById("zipError").style.visibility = "visible";
    return false;
    }
+else if(!zip.value.match(zipVal)){
+      document.getElementById("zipError").style.visibility = "visible";
+      return false;
+   }
 else {
    document.getElementById("zipError").style.visibility = "hidden";
    return false;
 }
  }
-// var specialKeys = new Array();
-// specialKeys.push(8); //Backspace
-// function isNumericZip(e) {
-//   document.getElementById("zip").innerHTML = "";
-//   var keyCode = e.which ? e.which : e.keyCode;
-//   var ret =
-//     (keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1;
-//   document.getElementById("zipError").style.display = ret ? "none" : "inline";
-//   return ret;
-// }
+
 function firstNameValidation(){
    let firstName = document.getElementById("firstName")
    let name = /^[a-zA-Z ]*$/;
@@ -270,6 +266,74 @@ function lastNameValidation(){
    }
    else{
       document.getElementById("lastnameError").style.visibility="hidden";
+      return false;
+   }
+}
+
+function cityValidation(){
+   let cityVal = document.getElementById("city")
+   let regCity = /^[a-zA-Z ]*$/;
+   if(cityVal.value.trim() == ""){
+      document.getElementById("cityError").style.visibility="visible";
+      return false;
+   }
+   else if(!cityVal.value.match(regCity)){
+      document.getElementById("cityError").style.visibility="visible";
+      return false;
+   }
+   else{
+      document.getElementById("cityError").style.visibility="hidden";
+      return false;
+   }
+}
+
+function empMobileMasking(){
+
+   let ele = document.getElementById("ePhone");
+   ele = ele.value.split("-").join("-");
+   let finalVal = ele.replace(
+     /(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/,
+     "($1$2$3)$4$5$6-$7$8$9$10"
+   );
+   document.getElementById("ePhone").value = finalVal;
+ }
+
+ function empMobileValidation(){
+   // let pattern = "/^\d{10}$/"
+  
+ let empphone = document.getElementById("ePhone");
+ let empmobilePhone = /^[0-9]*$/;
+ if (empphone.value.trim() == "") {
+    //loanPurpose.style.border = "solid 3px red";
+    document.getElementById("empPhoneError").style.visibility = "visible";
+    return false;
+    }
+ else if(!empphone.value.match(empmobilePhone)){
+      document.getElementById("empPhoneError").style.visibility = "visible";
+      return false;
+   }
+ else {
+    document.getElementById("empPhoneError").style.visibility = "hidden";
+    return false;
+ }
+ } 
+
+
+function incomeValidation(){
+
+      let empIncome = document.getElementById("aIncome")
+      let amountIncome =/^[0-9]*$/;
+
+   if(empIncome.value.trim() == ""){
+      document.getElementById("annualIncome").style.visibility = "visible";
+      return false;
+   }
+   else if(!empIncome.value.match(amountIncome)){
+      document.getElementById("annualIncome").style.visibility = "visible";
+      return false;
+   }
+   else{
+      document.getElementById("annualIncome").style.visibility = "hidden";
       return false;
    }
 }
