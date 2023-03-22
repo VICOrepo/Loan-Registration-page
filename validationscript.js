@@ -81,24 +81,27 @@ function mssn(v) {
    else {
        r = r.replace(/^(\d*)/, "$1");
    }
-   // else{
-   //    return document.getElementById("SNNError").style.visibility="visible";
-      
-   // }
+   
    return r;
 }
 function ssnValidation(){
-   let ssn = document.getElementById("SNN")
-   let regSnn =  "/^(?!(?:\D*0)+\D*$)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/";
+   let ssn = document.getElementById("SSN")
+   // let regSnn =  "/^(?!(?:\D*0)+\D*$)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/";
    //let regSnn = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
-   if (ssn.value.trim() == "" || !ssn.value.match(regSnn)) {
+   // let regSsn = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
+   let regSsn = /^(?!(?:\D*0)+\D*$)\(?\d{3}\)?[- ]?\d{2}[- ]?\d{4}$/
+   if (ssn.value.trim() == "") {
      // ssn.style.border = "solid 3px red";
-      document.getElementById("SNNError").style.visibility = "visible";
+      document.getElementById("SSNError").style.visibility = "visible";
+      return false;
+    }
+    else if(!ssn.value.match(regSsn)){
+      document.getElementById("SSNError").style.visibility = "visible";
       return false;
     }
      else  {
      // ssn.style.border = "solid 3px red";
-      document.getElementById("SNNError").style.visibility = "disable";
+      document.getElementById("SSNError").style.visibility = "hidden";
       return false;
     } 
 }
@@ -449,11 +452,3 @@ function addressValidation(){
    }
 
 }
-
-
-
-
-
-
-
-
