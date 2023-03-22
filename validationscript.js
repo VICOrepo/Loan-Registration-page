@@ -432,6 +432,24 @@ else{
 }
 }
 
+function addressValidation(){
+   let addressVal = document.getElementById("address")
+   let regadd = /^([a-zA-Z0-9 _-]+)$/;
+   if(addressVal.value.trim() == ""){
+      document.getElementById("addressError").style.visibility="visible";
+      return false;
+   }
+   else if(!addressVal.value.match(regadd)){
+      document.getElementById("addressError").style.visibility="visible";
+      return false;
+   }
+   else{
+      document.getElementById("addressError").style.visibility="hidden";
+      return false;
+   }
+
+}
+
 
 
 

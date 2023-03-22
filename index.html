@@ -209,6 +209,7 @@
         placeholder="Address"
         class="form-group"
         style="width:500px;"
+        onblur="addressValidation()"
         id="address"
         maxlength="100"
         required/>
@@ -330,7 +331,7 @@
             class="form-group"
             required
              /><span id="zipError" style="color: red;visibility: hidden;">Character and Special Character are not allowed</span>
-             
+
             </div>
     </div>
     
@@ -416,7 +417,7 @@
             onblur="empNameValidation()"
             maxlength="50"
             class="form-group"
-            required /> <span id="empNameError" style="color: red;visibility: hidden;">*Invalid Employer Name</span>
+            required /> <span id="empNameError" style="color: red;visibility: hidden;">*Special Character not allowed</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -432,7 +433,7 @@
             maxlength="10"
             class="form-group"
             required
-             /><span id="empPhoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+             /><span id="empPhoneError" style="color: red;visibility: hidden;">*Phone No. must be in Numeric</span>
              
     </div>
     
@@ -442,7 +443,7 @@
   <br>
    <div class="row" >
     <div class="col-lg-12 text-center" >
-       <button class="btn btn-primary btn-block"  style="margin-top: 10px; margin-bottom: 20px;"> Submit</button>
+       <button class="btn btn-primary btn-block"  style="margin-top: 10px; margin-bottom: 20px;">Submit</button>
     </div>
    </div>
   
