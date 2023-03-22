@@ -35,7 +35,7 @@
             onkeypress="currency()"
             maxlength="6"
             required/>
-            <span id="loanAmountError" style="color: red; visibility: hidden;" >*Write a valid Amount.</span>
+            <span id="loanAmountError" style="color: red; visibility: hidden;" >*Amount must be numeric digit</span>
             <br>
             
            <div class="form-group">
@@ -48,7 +48,7 @@
             id="loanPurpose"
             maxlength="150"
             required/>
-            <span id="loanPurposeError" style="color: red; visibility: hidden;" >*Write a valid Purpose.</span>
+            <span id="loanPurposeError" style="color: red; visibility: hidden;" >*Special character not allowed</span>
            </div>
           
         </div>
@@ -76,7 +76,7 @@
             maxlength="40"
             class="form-group"
             required />
-            <span id="firstnameError" style="color: red;visibility: hidden;">*Invalid first Name</span>
+            <span id="firstnameError" style="color: red;visibility: hidden;">*Special character and Numeric value are not allowed</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -104,7 +104,7 @@
             maxlength="40"
             class="form-group"
             required />
-            <span id="lastnameError" style="color: red;visibility: hidden;">*Invalid Last Name</span>
+            <span id="lastnameError" style="color: red;visibility: hidden;">*Special character and Numeric value are not allowed</span>
         </div>
     </div>
  </div>
@@ -138,7 +138,7 @@
             maxlength="80"
             class="form-group"
             required
-             /><span id="EmailError" style="color: red;visibility: hidden;">Invalid Email</span>
+             /><span id="EmailError" style="color: red;visibility: hidden;">Please Enter Valid Email</span>
             </div>
     </div>
     
@@ -157,7 +157,7 @@
             maxlength="10"
             class="form-group"
             required />
-            <span id="hPhoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+            <span id="hPhoneError" style="color: red;visibility: hidden;">Enter Valid Phone No.</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -173,7 +173,7 @@
             maxlength="10"
             class="form-group"
              required/>
-             <span id="mphoneError" style="color: red;visibility: hidden;">Invalid Phone No.</span>
+             <span id="mphoneError" style="color: red;visibility: hidden;">Enter Valid Phone No.</span>
             </div>
     </div>
     <div class="col-lg-4">
@@ -189,7 +189,7 @@
             onkeypress="mask(this,mssn)"
             class="form-group"
             required />
-            <span id="SNNError" style="color: red;visibility: hidden;">*Invalid SSN</span>
+            <span id="SNNError" style="color: red;visibility: hidden;">*Character is not allowed.</span>
         </div>
     </div>
  </div>
@@ -210,8 +210,9 @@
         class="form-group"
         style="width:500px;"
         id="address"
+        maxlength="100"
         required/>
-        <span id="addressError" style="color: red; visibility: hidden;" >Invalid Address</span>
+        <span id="addressError" style="color: red; visibility: hidden;" >Special character not allowed.</span>
         <br>
        
        <div class="form-group">
@@ -242,7 +243,7 @@
         onblur="cityValidation()"
         style="width:350px;"
         maxlength="30"
-       required /><span id="cityError" style="color: red;visibility: hidden;">*Invalid City</span>
+       required /><span id="cityError" style="color: red;visibility: hidden;">*City must contain Character Only.</span>
         </div>
     </div>
     <div class="col-lg-4">
@@ -328,7 +329,8 @@
             maxlength="5"
             class="form-group"
             required
-             /><span id="zipError" style="color: red;visibility: hidden;">Invalid Zip</span>
+             /><span id="zipError" style="color: red;visibility: hidden;">Character and Special Character are not allowed</span>
+             
             </div>
     </div>
     

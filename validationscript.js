@@ -89,8 +89,9 @@ function mssn(v) {
 }
 function ssnValidation(){
    let ssn = document.getElementById("SNN")
-   let regSnn =  "/^\$?(?!0.00)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/";
-   if (ssn.value.trim() == "" || !regSnn.test(ssn.value)) {
+   let regSnn =  "/^(?!(?:\D*0)+\D*$)(([0-9]{1,3},([0-9]{3},)*)[0-9]{3}|[0-9]{1,3})(\.[0-9]{2})?$/";
+   //let regSnn = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
+   if (ssn.value.trim() == "" || !ssn.value.match(regSnn)) {
      // ssn.style.border = "solid 3px red";
       document.getElementById("SNNError").style.visibility = "visible";
       return false;
@@ -166,7 +167,9 @@ function isPurpose(){
 function homeMobileValidation(e){
   
 let hPhone = document.getElementById("hPhone");
-let homePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+// let homePhone = /^(?!0+$)(\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4}))$/;
+// let homePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+let homePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
 if (hPhone.value.trim() == "" ) {
    
    document.getElementById("hPhoneError").style.visibility = "visible";
@@ -196,7 +199,8 @@ function homeMobileMasking(){
 function mobileValidation(){
   
  let mPhone = document.getElementById("mPhone");
- let mobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+//  let mobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+ let mobilePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
 
  if (mPhone.value.trim() == "") {
    
@@ -327,7 +331,8 @@ function lastNameValidation(){
 
 function empNameValidation(){
    let empNameVal = document.getElementById("empName")
-   let regEmp = /^[a-zA-Z ]*$/;
+   // let regEmp = /^[A-Za-z0-9]*$/;
+   let regEmp = /^([a-zA-Z0-9 _-]+)$/;
    if(empNameVal.value.trim() == ""){
       document.getElementById("empNameError").style.visibility="visible";
       return false;
@@ -374,7 +379,8 @@ function empMobileMasking(){
    // let pattern = "/^\d{10}$/"
   
  let empphone = document.getElementById("ePhone");
- let empmobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+//  let empmobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+ let empmobilePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
  if (empphone.value.trim() == "") {
     //loanPurpose.style.border = "solid 3px red";
     document.getElementById("empPhoneError").style.visibility = "visible";
