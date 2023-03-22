@@ -24,11 +24,11 @@ function validateForm() {
     document.getElementById("loanPurposeError").style.visibility = "visible";
     return false;
   } 
-  else if (!regname.test(firstName.value) || firstName.value.trim() == "") {
-    firstName.style.border = "solid 3px red";
-    document.getElementById("firstnameError").style.visibility = "visible";
-    return false;
-  } 
+//   else if (!regname.test(firstName.value) || firstName.value.trim() == "") {
+//     firstName.style.border = "solid 3px red";
+//     document.getElementById("firstnameError").style.visibility = "visible";
+//     return false;
+//   } 
   else if (!regname.test(lastName.value) || lastName.value.trim() == "") {
     lastName.style.border = "solid 3px red";
     document.getElementById("lastnameError").style.visibility = "visible";
@@ -105,14 +105,33 @@ function ssnValidation(){
 
 
 function loanAmountValidation(){
-      let loanAmount = document.getElementById("loanAmount")
-      let amount =/^[0-9]*$/;
-
-   if(loanAmount.value.trim() == ""||loanAmount.value<2000 || loanAmount.value>20000){
-      document.getElementById("loanAmountError").style.visibility = "visible";
+   let dollarUS = Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+  
+    //var currency = document.getElementById("lamount").value;
+  
+    let loanAmount1 = document.getElementById("loanAmount").value;
+    let loanAmount2 = loanAmount1.replace("$", "");
+    let loanAmount = loanAmount2.replace(",", "");
+    document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
+  
+    if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
+      document.getElementById("loanAmountError").style.visibility="visible";
+    }
+    else{
+      document.getElementById("loanAmountError").style.visibility = "hidden";
       return false;
-   }
-   else if(!loanAmount.value.match(amount)){
+    }
+  
+}
+
+function currency(){
+
+   let loanAmount = document.getElementById("loanAmount")
+   let amount =/^[0-9]*$/;
+  if( !loanAmount.value.match(amount)){
       document.getElementById("loanAmountError").style.visibility = "visible";
       return false;
    }
@@ -121,6 +140,7 @@ function loanAmountValidation(){
       return false;
    }
 }
+
 
 function isPurpose(){
    let loanPurpose = document.getElementById("loanPurpose");
@@ -206,16 +226,49 @@ function mobileValidation(){
  }
 
 
- function dOB() {
+//  function DOB() {
+//    let dob = document.getElementById("DOB")
+//    let today = new Date();
+   
+//    today.setDate(today.getDate() - 18 * 365);
+ 
+//    let dd = String(today.getDate()).padStart(2, "0");
+//    let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+//    let yyyy = today.getFullYear();
+//    today = yyyy + "-" + mm + "-" + dd;
+//    document.getElementById("DOB").max = today;
+//    if(dob.value.trim() == ""){
+//       document.getElementById("DOBError").style.visibility = "visible";
+//    return false;
+//    }
+//    else{
+//       document.getElementById("DOBError").style.visibility = "hidden";
+//    return false;
+//    }
+   
+//  }
+
+ function onChangeDOB(executionContext){
+   let formContext = executionContext.getFormContext();
+   let birthDate = formContext.getAttribute("DOB").getValue();
    let today = new Date();
- 
-   today.setDate(today.getDate() - 18 * 365);
- 
-   let dd = String(today.getDate()).padStart(2, "0");
-   let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-   let yyyy = today.getFullYear();
-   today = yyyy + "-" + mm + "-" + dd;
-   document.getElementById("DOB").max = today;
+   let validMinDate = new Date(
+      today.getFullYear()-18,
+      today.getMonth(),
+      today.getDate(),
+      today.getHours(),
+      today.getMinutes());
+      //let birthDateFieldControl = formContext.getControl("DOB");
+
+      if(birthDate>validMinDate){
+         document.getElementById("DOBError").style.visibility = "visible";
+         return false;
+      }
+      else{
+         document.getElementById("DOBError").style.visibility = "hidden";
+      return false;
+      }
+
  }
 
  function zipvalidation(){
@@ -272,6 +325,23 @@ function lastNameValidation(){
    }
 }
 
+function empNameValidation(){
+   let empNameVal = document.getElementById("empName")
+   let regEmp = /^[a-zA-Z ]*$/;
+   if(empNameVal.value.trim() == ""){
+      document.getElementById("empNameError").style.visibility="visible";
+      return false;
+   }
+   else if(!empNameVal.value.match(regEmp)){
+      document.getElementById("empNameError").style.visibility="visible";
+      return false;
+   }
+   else{
+      document.getElementById("empNameError").style.visibility="hidden";
+      return false;
+   }
+}
+
 function cityValidation(){
    let cityVal = document.getElementById("city")
    let regCity = /^[a-zA-Z ]*$/;
@@ -323,22 +393,40 @@ function empMobileMasking(){
 
 function incomeValidation(){
 
-      let empIncome = document.getElementById("aIncome")
-      let amountIncome =/^[0-9]*$/;
-
-   if(empIncome.value.trim() == ""){
-      document.getElementById("annualIncome").style.visibility = "visible";
-      return false;
-   }
-   else if(!empIncome.value.match(amountIncome)){
-      document.getElementById("annualIncome").style.visibility = "visible";
-      return false;
-   }
-   else{
+   let dollarUS = Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+    //var currency = document.getElementById("lamount").value;
+    let incomeAmount1 = document.getElementById("aIncome").value;
+    let incomeAmount2 = incomeAmount1.replace("$", "");
+    let incomeAmount = incomeAmount2.replace(",", "");
+    document.getElementById("aIncome").value = dollarUS.format(incomeAmount);
+    if(incomeAmount <= 0 || incomeAmount == "" || incomeAmount > 10000000){
+      document.getElementById("annualIncome").style.visibility="visible";
+    }
+    else{
       document.getElementById("annualIncome").style.visibility = "hidden";
       return false;
-   }
+    }
+     
 }
+
+function income(){
+   let empIncome = document.getElementById("aIncome")
+   let amountIncome =/^[0-9]*$/;
+
+if(!empIncome.value.match(amountIncome)){
+   document.getElementById("annualIncome").style.visibility = "visible";
+   return false;
+}
+else{
+   document.getElementById("annualIncome").style.visibility = "hidden";
+   return false;
+}
+}
+
+
 
 
 

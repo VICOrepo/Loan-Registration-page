@@ -32,6 +32,7 @@
             style="width:400px;"
             id="loanAmount"
             onblur="loanAmountValidation()"
+            onkeypress="currency()"
             maxlength="6"
             required/>
             <span id="loanAmountError" style="color: red; visibility: hidden;" >*Write a valid Amount.</span>
@@ -117,11 +118,11 @@
             id="DOB"
             name="DOB"
             style="width:350px;"
-            onclick="dOB"
+            onblur="onChangeDOB(date)"
             maxlength="100"
             class="form-group"
             required />
-            <span id="DOBError" style="color: red;visibility: hidden;">Invalid Date of Birth</span>
+            <span id="DOBError" style="color: red;visibility: hidden;">*Invalid Date of Birth</span>
 
         </div>
     </div>
@@ -377,8 +378,9 @@
             id="aIncome"
             name="aIncome"
             style="width:350px;"
-            placeholder="Income"
+            placeholder="It should be less then 1M$"
             onblur="incomeValidation()"
+            onkeypress="income()"
             maxlength="40"
             class="form-group"
             required />
@@ -409,11 +411,10 @@
             id="empName"
             name="empName"
             style="width:350px;"
-            maxlength="100"
+            onblur="empNameValidation()"
+            maxlength="50"
             class="form-group"
-            required />
-            
-
+            required /> <span id="empNameError" style="color: red;visibility: hidden;">*Invalid Employer Name</span>
         </div>
     </div>
     <div class="col-lg-4">
