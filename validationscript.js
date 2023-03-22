@@ -146,7 +146,7 @@ function isPurpose(){
 function homeMobileValidation(e){
   
 let hPhone = document.getElementById("hPhone");
-let homePhone = /^[0-9]*$/;
+let homePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
 if (hPhone.value.trim() == "" ) {
    
    document.getElementById("hPhoneError").style.visibility = "visible";
@@ -176,7 +176,8 @@ function homeMobileMasking(){
 function mobileValidation(){
   
  let mPhone = document.getElementById("mPhone");
- let mobilePhone = /^[0-9]*$/;
+ let mobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
+
  if (mPhone.value.trim() == "") {
    
     document.getElementById("mphoneError").style.visibility = "visible";
@@ -186,6 +187,7 @@ function mobileValidation(){
       document.getElementById("mphoneError").style.visibility = "visible";
       return false;
    }
+ 
  else {
     document.getElementById("mphoneError").style.visibility = "hidden";
     return false;
@@ -302,7 +304,7 @@ function empMobileMasking(){
    // let pattern = "/^\d{10}$/"
   
  let empphone = document.getElementById("ePhone");
- let empmobilePhone = /^[0-9]*$/;
+ let empmobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
  if (empphone.value.trim() == "") {
     //loanPurpose.style.border = "solid 3px red";
     document.getElementById("empPhoneError").style.visibility = "visible";
