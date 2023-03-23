@@ -43,9 +43,12 @@ function emailValidation(){
    let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 
    //console.log(mailFormat.test(email.value));
-   if(!mailFormat.test(email.value)){
+   if(email.value.trim()==""){
+      document.getElementById("EmailError").innerHTML="*Field should'nt be empty"
+   }
+  else if(!mailFormat.test(email.value)){
      // email.style.border = "solid 3px red";
-      document.getElementById("EmailError").style.visibility="visible";
+      document.getElementById("EmailError").innerHTML="*Email should contain @"
       return false;
    }
 
@@ -90,13 +93,19 @@ function ssnValidation(){
    //let regSnn = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
    // let regSsn = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
    let regSsn = /^(?!(?:\D*0)+\D*$)\(?\d{3}\)?[- ]?\d{2}[- ]?\d{4}$/
-   if (ssn.value.trim() == "") {
+
+   if (ssn.value.length <9) {
+      // ssn.style.border = "solid 3px red";
+       document.getElementById("SSNError").innerHTML="Length of SSN must 9 Digit";
+       return false;
+     }
+    if (ssn.value.trim() == "") {
      // ssn.style.border = "solid 3px red";
-      document.getElementById("SSNError").style.visibility = "visible";
+      document.getElementById("SSNError").innerHTML="Field should'nt be empty";
       return false;
     }
     else if(!ssn.value.match(regSsn)){
-      document.getElementById("SSNError").style.visibility = "visible";
+      document.getElementById("SSNError").innerHTML="Character are not allowed";
       return false;
     }
      else  {
@@ -124,15 +133,16 @@ if(loan.value.match(amount1)){
     document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
   
       if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
-      document.getElementById("loanAmountError").style.visibility="visible";
-    }
+      document.getElementById("loanAmountError").innerHTML= "*Amount should be >=2000 and <=20000";
+      return false
+      }
       else{
       document.getElementById("loanAmountError").style.visibility = "hidden";
       return false;
-    }
+      }
     }
 else{
-      document.getElementById("loanAmountError").style.visibility = "visible";
+      document.getElementById("loanAmountError").innerHTML= "*Characters and special characters is not allowed";
       return false;
    }
 }
@@ -154,16 +164,16 @@ function amountValidation(){
 
 function isPurpose(){
    let loanPurpose = document.getElementById("loanPurpose");
-   let purpose =/^([a-zA-Z0-9 _-]+)$/;
+   let purpose = /^[a-zA-Z ]*$/;
    
    //console.log(!regPur.match(loanPurpose.value))
    if (loanPurpose.value.trim() == "") {
       //loanPurpose.style.border = "solid 3px red";
-      document.getElementById("loanPurposeError").style.visibility = "visible";
+      document.getElementById("loanPurposeError").innerHTML="*Field should'nt be Empty"
       return false;
       }
    else if(!loanPurpose.value.match(purpose)){
-      document.getElementById("loanPurposeError").style.visibility = "visible";
+      document.getElementById("loanPurposeError").innerHTML="*Numbers and Special Character not allowed";
       return false;
    }
    
@@ -179,13 +189,18 @@ let hPhone = document.getElementById("hPhone");
 // let homePhone = /^(?!0+$)(\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4}))$/;
 // let homePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
 let homePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
-if (hPhone.value.trim() == "" ) {
-   
-   document.getElementById("hPhoneError").style.visibility = "visible";
+ if (hPhone.value.trim() == "" ) {
+   document.getElementById("hPhoneError").innerHTML="Field should'nt be Empty"
+   return false;
+   }  
+
+else if(hPhone.value.length < 10){
+   document.getElementById("hPhoneError").innerHTML="Phone no. should be of Length 9 digit"
    return false;
    }
+  
    else if(!hPhone.value.match(homePhone)){
-      document.getElementById("hPhoneError").style.visibility = "visible";
+      document.getElementById("hPhoneError").innerHTML="Characters are not allowed"
       return false;
    }
 else {
@@ -213,11 +228,11 @@ function mobileValidation(){
 
  if (mPhone.value.trim() == "") {
    
-    document.getElementById("mphoneError").style.visibility = "visible";
+    document.getElementById("mphoneError").innerHTML="Field should'nt be Empty";
     return false;
     }
     else if(!mPhone.value.match(mobilePhone)){
-      document.getElementById("mphoneError").style.visibility = "visible";
+      document.getElementById("mphoneError").innerHTML="Character not allowed";
       return false;
    }
  
@@ -289,13 +304,18 @@ function mobileValidation(){
 let zip = document.getElementById("zip")
 let zipVal = /^[0-9]*$/;
 
-if (zip.value.trim() == ""|| zip.value.length<5) {
+if (zip.value.trim() == "") {
    //loanPurpose.style.border = "solid 3px red";
-   document.getElementById("zipError").style.visibility = "visible";
+   document.getElementById("zipError").innerHTML = "Field should'nt be empty"
    return false;
    }
+else if(zip.value.length<5)
+{
+   document.getElementById("zipError").innerHTML = "Length must be of 5 digit"
+   return false;  
+}
 else if(!zip.value.match(zipVal)){
-      document.getElementById("zipError").style.visibility = "visible";
+      document.getElementById("zipError").innerHTML = "Character and special character not allowed"
       return false;
    }
 else {
@@ -308,11 +328,11 @@ function firstNameValidation(){
    let firstName = document.getElementById("firstName")
    let name = /^[a-zA-Z ]*$/;
    if(firstName.value.trim() == ""){
-      document.getElementById("firstnameError").style.visibility="visible";
+      document.getElementById("firstnameError").innerHTML = "*Field should'nt empty";
       return false;
    }
    else if(!firstName.value.match(name)){
-      document.getElementById("firstnameError").style.visibility="visible";
+      document.getElementById("firstnameError").innerHTML = "*Numbers and Special Character are not allowed";
       return false;
    }
    else{
@@ -325,15 +345,28 @@ function lastNameValidation(){
    let lastName = document.getElementById("lastName")
    let lastn = /^[a-zA-Z ]*$/;
    if(lastName.value.trim() == ""){
-      document.getElementById("lastnameError").style.visibility="visible";
+      document.getElementById("lastnameError").innerHTML = "*Field should'nt empty";
       return false;
    }
    else if(!lastName.value.match(lastn)){
-      document.getElementById("lastnameError").style.visibility="visible";
+      document.getElementById("lastnameError").innerHTML = "*Numbers and Special Character are not allowed";
       return false;
    }
    else{
       document.getElementById("lastnameError").style.visibility="hidden";
+      return false;
+   }
+}
+function middleNameValidation(){
+   let middleName = document.getElementById("middleName")
+   let middlen = /^[a-zA-Z ]*$/;
+  
+   if(!middleName.value.match(middlen)){
+      document.getElementById("middlenameError").innerHTML = "*Numbers and Special not allowed";
+      return false;
+   }
+   else{
+      document.getElementById("middlenameError").style.visibility="hidden";
       return false;
    }
 }
@@ -343,11 +376,11 @@ function empNameValidation(){
    // let regEmp = /^[A-Za-z0-9]*$/;
    let regEmp = /^([a-zA-Z0-9 _-]+)$/;
    if(empNameVal.value.trim() == ""){
-      document.getElementById("empNameError").style.visibility="visible";
+      document.getElementById("empNameError").innerHTML="Field should'nt be empty";
       return false;
    }
    else if(!empNameVal.value.match(regEmp)){
-      document.getElementById("empNameError").style.visibility="visible";
+      document.getElementById("empNameError").innerHTML="Special Character not allowed";
       return false;
    }
    else{
@@ -360,11 +393,11 @@ function cityValidation(){
    let cityVal = document.getElementById("city")
    let regCity = /^[a-zA-Z ]*$/;
    if(cityVal.value.trim() == ""){
-      document.getElementById("cityError").style.visibility="visible";
+      document.getElementById("cityError").innerHTML="Field should'nt be empty";
       return false;
    }
    else if(!cityVal.value.match(regCity)){
-      document.getElementById("cityError").style.visibility="visible";
+      document.getElementById("cityError").innerHTML="Character and Special Character not allowed";
       return false;
    }
    else{
@@ -412,19 +445,26 @@ function incomeValidation(){
       style: "currency",
       currency: "USD",
     });
+    let incomeval =/^[0-9]*$/;
+    let incomevalidation = document.getElementById("aIncome")
+if(incomevalidation.value.match(incomeval)){
     //var currency = document.getElementById("lamount").value;
     let incomeAmount1 = document.getElementById("aIncome").value;
     let incomeAmount2 = incomeAmount1.replace("$", "");
     let incomeAmount = incomeAmount2.replace(",", "");
     document.getElementById("aIncome").value = dollarUS.format(incomeAmount);
     if(incomeAmount <= 0 || incomeAmount == "" || incomeAmount > 10000000){
-      document.getElementById("annualIncome").style.visibility="visible";
+      document.getElementById("annualIncome").innerHTML="*Amount should be >=0 and <=10000000";
     }
     else{
       document.getElementById("annualIncome").style.visibility = "hidden";
       return false;
-    }
-     
+    }    
+}
+else{
+   document.getElementById("annualIncome").innerHTML= "*Characters and special characters is not allowed";
+      return false;
+}
 }
 
 function income(){
@@ -445,11 +485,11 @@ function addressValidation(){
    let addressVal = document.getElementById("address")
    let regadd = /^([a-zA-Z0-9 _-]+)$/;
    if(addressVal.value.trim() == ""){
-      document.getElementById("addressError").style.visibility="visible";
+      document.getElementById("addressError").innerHTML="Field should'nt be empty";
       return false;
    }
    else if(!addressVal.value.match(regadd)){
-      document.getElementById("addressError").style.visibility="visible";
+      document.getElementById("addressError").innerHTML="Special Character not allowed";
       return false;
    }
    else{
@@ -457,4 +497,46 @@ function addressValidation(){
       return false;
    }
 
+}
+
+function rtypeValidation(){
+   let type = document.getElementById("rtype")
+   let typevali = /^[a-zA-Z ]*$/;
+
+  
+    if(!type.value.match(typevali)){
+      document.getElementById("typeError").innerHTML="Numbers and special character not allowed"
+      return false;
+   }
+   else{
+      document.getElementById("typeError").style.visibility="hidden";
+      return false;
+   }
+}
+function emptypeValidation(){
+   let etype = document.getElementById("EmployType")
+   let etypevali = /^[a-zA-Z ]*$/;
+
+  
+    if(!etype.value.match(etypevali)){
+      document.getElementById("emptypeError").innerHTML="Numbers and special character not allowed"
+      return false;
+   }
+   else{
+      document.getElementById("emptypeError").style.visibility="hidden";
+      return false;
+   }
+}
+function address2Validation(){
+   let address2Val = document.getElementById("address2")
+   let regadd2 = /^([a-zA-Z0-9 _-]+)$/;
+   
+   if(!address2Val.value.match(regadd2)){
+      document.getElementById("address2Error").innerHTML="Special Character not allowed";
+      return false;
+   }
+   else{
+      document.getElementById("address2Error").style.visibility="hidden";
+      return false;
+   }
 }
