@@ -1,5 +1,5 @@
 
-function validateForm() {
+function LoanValidateForm() {
   let loanAmount = document.getElementById("loanAmount");
   let loanPurpose = document.getElementById("loanPurpose");
   let firstName = document.getElementById("firstName");
@@ -108,7 +108,7 @@ function ssnValidation(){
 
 
 
-function loanAmountValidation(){
+function currencyMasking(){
    let dollarUS = Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
@@ -131,7 +131,7 @@ function loanAmountValidation(){
   
 }
 
-function currency(){
+function amountValidation(){
 
    let loanAmount = document.getElementById("loanAmount")
    let amount =/^[0-9]*$/;
