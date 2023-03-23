@@ -240,7 +240,7 @@ function mobileValidation(){
    today.setDate(today.getDate() - 18 * 365);
  
    let dd = String(today.getDate()).padStart(2, "0");
-   let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+   let mm = String(today.getMonth() + 1).padStart(2, "0"); 
    let yyyy = today.getFullYear();
    today = yyyy + "-" + mm + "-" + dd;
    document.getElementById("DOB").max = today;
