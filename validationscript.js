@@ -115,19 +115,37 @@ function currencyMasking(){
     });
   
     //var currency = document.getElementById("lamount").value;
-  
+    let amount1 =/^[0-9]*$/;
+    let loan = document.getElementById("loanAmount")
+if(loan.value.match(amount1)){
     let loanAmount1 = document.getElementById("loanAmount").value;
     let loanAmount2 = loanAmount1.replace("$", "");
     let loanAmount = loanAmount2.replace(",", "");
     document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
   
-    if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
+      if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
       document.getElementById("loanAmountError").style.visibility="visible";
     }
-    else{
+      else{
       document.getElementById("loanAmountError").style.visibility = "hidden";
       return false;
     }
+    }
+else{
+      document.getElementById("loanAmountError").style.visibility = "visible";
+      return false;
+   }
+   //  let loanAmount2 = loanAmount1.replace("$", "");
+   //  let loanAmount = loanAmount2.replace(",", "");
+   //  document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
+  
+   //  if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
+   //    document.getElementById("loanAmountError").style.visibility="visible";
+   //  }
+   //  else{
+   //    document.getElementById("loanAmountError").style.visibility = "hidden";
+   //    return false;
+   //  }
   
 }
 
