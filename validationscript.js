@@ -233,50 +233,50 @@ function mobileValidation(){
  }
 
 
-//  function DOB() {
-//    let dob = document.getElementById("DOB")
-//    let today = new Date();
-   
-//    today.setDate(today.getDate() - 18 * 365);
- 
-//    let dd = String(today.getDate()).padStart(2, "0");
-//    let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-//    let yyyy = today.getFullYear();
-//    today = yyyy + "-" + mm + "-" + dd;
-//    document.getElementById("DOB").max = today;
-//    if(dob.value.trim() == ""){
-//       document.getElementById("DOBError").style.visibility = "visible";
-//    return false;
-//    }
-//    else{
-//       document.getElementById("DOBError").style.visibility = "hidden";
-//    return false;
-//    }
-   
-//  }
-
- function onChangeDOB(executionContext){
-   let formContext = executionContext.getFormContext();
-   let birthDate = formContext.getAttribute("DOB").getValue();
+ function DOB() {
+   let dob = document.getElementById("DOB")
    let today = new Date();
-   let validMinDate = new Date(
-      today.getFullYear()-18,
-      today.getMonth(),
-      today.getDate(),
-      today.getHours(),
-      today.getMinutes());
-      //let birthDateFieldControl = formContext.getControl("DOB");
-
-      if(birthDate>validMinDate){
-         document.getElementById("DOBError").style.visibility = "visible";
-         return false;
-      }
-      else{
-         document.getElementById("DOBError").style.visibility = "hidden";
-      return false;
-      }
-
+   
+   today.setDate(today.getDate() - 18 * 365);
+ 
+   let dd = String(today.getDate()).padStart(2, "0");
+   let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+   let yyyy = today.getFullYear();
+   today = yyyy + "-" + mm + "-" + dd;
+   document.getElementById("DOB").max = today;
+   if(dob.value.trim() == ""){
+      document.getElementById("DOBError").style.visibility = "visible";
+   return false;
+   }
+   else{
+      document.getElementById("DOBError").style.visibility = "hidden";
+   return false;
+   }
+   
  }
+
+//  function onChangeDOB(executionContext){
+//    let formContext = executionContext.getFormContext();
+//    let birthDate = formContext.getAttribute("DOB").getValue();
+//    let today = new Date();
+//    let validMinDate = new Date(
+//       today.getFullYear()-18,
+//       today.getMonth(),
+//       today.getDate(),
+//       today.getHours(),
+//       today.getMinutes());
+//       //let birthDateFieldControl = formContext.getControl("DOB");
+
+//       if(birthDate>validMinDate){
+//          document.getElementById("DOBError").style.visibility = "visible";
+//          return false;
+//       }
+//       else{
+//          document.getElementById("DOBError").style.visibility = "hidden";
+//       return false;
+//       }
+
+//  }
 
  function zipvalidation(){
 
