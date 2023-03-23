@@ -135,18 +135,6 @@ else{
       document.getElementById("loanAmountError").style.visibility = "visible";
       return false;
    }
-   //  let loanAmount2 = loanAmount1.replace("$", "");
-   //  let loanAmount = loanAmount2.replace(",", "");
-   //  document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
-  
-   //  if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
-   //    document.getElementById("loanAmountError").style.visibility="visible";
-   //  }
-   //  else{
-   //    document.getElementById("loanAmountError").style.visibility = "hidden";
-   //    return false;
-   //  }
-  
 }
 
 function amountValidation(){
@@ -166,7 +154,7 @@ function amountValidation(){
 
 function isPurpose(){
    let loanPurpose = document.getElementById("loanPurpose");
-   let purpose = /^[a-zA-Z ]*$/;
+   let purpose =/^([a-zA-Z0-9 _-]+)$/;
    
    //console.log(!regPur.match(loanPurpose.value))
    if (loanPurpose.value.trim() == "") {
