@@ -285,26 +285,69 @@ else {
 
 
  function DOB() {
-   let dob = document.getElementById("DOB")
-   let today = new Date();
-   
-   today.setDate(today.getDate() - 18 * 365);
+
+   let lblError = document.getElementById("DOBError");
  
-   let dd = String(today.getDate()).padStart(2, "0");
-   let mm = String(today.getMonth() + 1).padStart(2, "0"); 
-   let yyyy = today.getFullYear();
-   today = yyyy + "-" + mm + "-" + dd;
-   document.getElementById("DOB").max = today;
-   if(dob.value.trim() == ""){
-      document.getElementById("DOBError").style.visibility = "visible";
-   return false;
+   //Get the date from the TextBox.
+   let dateString = document.getElementById("DOB").value;
+   let regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+
+   //Check whether valid dd/MM/yyyy Date Format.
+   if(dateString.value.trim()==""){
+      document.getElementById("DOBError").innerHTML="Field should'nt be empty"
+      return false
    }
-   else{
-      document.getElementById("DOBError").style.visibility = "hidden";
-   return false;
-   }
-   
+   else if (dateString.value.match(regex)) {
+       let parts = dateString.split("/");
+       let dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+       let dtCurrent = new Date();
+       document.getElementById("DOBError").innerHTML="Eligibility 18 years ONLY."
+      // lblError.innerHTML = "Eligibility 18 years ONLY."
+       if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+           return false;
+       }
+
+       if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
+
+           //CD: 11/06/2018 and DB: 15/07/2000. Will turned 18 on 15/07/2018.
+           if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+               return false;
+           }
+           if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+               //CD: 11/06/2018 and DB: 15/06/2000. Will turned 18 on 15/06/2018.
+               if (dtCurrent.getDate() < dtDOB.getDate()) {
+                   return false;
+               }
+           }
+       }
+       document.getElementById("DOBError").innerHTML="";
+       return true;
+   } else {
+      // lblError.innerHTML = "Enter date in dd/MM/yyyy format ONLY."
+       document.getElementById("DOBError").innerHTML="Enter date in dd/MM/yyyy format ONLY."
+       return false;
+   }   
  }
+
+
+   // let dob = document.getElementById("DOB")
+   // let today = new Date();
+   
+   // today.setDate(today.getDate() - 18 * 365);
+ 
+   // let dd = String(today.getDate()).padStart(2, "0");
+   // let mm = String(today.getMonth() + 1).padStart(2, "0"); 
+   // let yyyy = today.getFullYear();
+   // today = yyyy + "-" + mm + "-" + dd;
+   // document.getElementById("DOB").max = today;
+   // if(dob.value.trim() == ""){
+   //    document.getElementById("DOBError").style.visibility = "visible";
+   // return false;
+   // }
+   // else{
+   //    document.getElementById("DOBError").style.visibility = "hidden";
+   // return false;
+   // }
 
 //  function onChangeDOB(executionContext){
 //    let formContext = executionContext.getFormContext();
