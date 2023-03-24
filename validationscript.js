@@ -124,7 +124,7 @@ function currencyMasking(){
     });
   
     //var currency = document.getElementById("lamount").value;
-    let amount1 =/^[0-9]*$/;
+    let amount1 =/^[+-]?((\d+(\.\d*)?)|(\.\d+))$/;
     let loan = document.getElementById("loanAmount")
 if(loan.value.match(amount1)){
     let loanAmount1 = document.getElementById("loanAmount").value;
@@ -132,7 +132,7 @@ if(loan.value.match(amount1)){
     let loanAmount = loanAmount2.replace(",", "");
     document.getElementById("loanAmount").value = dollarUS.format(loanAmount);
   
-      if(loanAmount < 2000 || loanAmount == "" || loanAmount > 20000){
+      if(loanAmount < 2000.0 || loanAmount > 20000.0){
       document.getElementById("loanAmountError").innerHTML= "*Amount should be >=2000 and <=20000";
       return false
       }
@@ -141,25 +141,28 @@ if(loan.value.match(amount1)){
       return false;
       }
     }
+else if (loan.value.trim() ==""){
+   document.getElementById("loanAmountError").innerHTML="Field should'nt be empty"
+}
 else{
       document.getElementById("loanAmountError").innerHTML= "*Characters and special characters is not allowed";
       return false;
    }
 }
 
-function amountValidation(){
+// function amountValidation(){
 
-   let loanAmount = document.getElementById("loanAmount")
-   let amount =/^[0-9]*$/;
-  if( !loanAmount.value.match(amount)){
-      document.getElementById("loanAmountError").style.visibility = "visible";
-      return false;
-   }
-   else{
-      document.getElementById("loanAmountError").style.visibility = "hidden";
-      return false;
-   }
-}
+//    let loanAmount = document.getElementById("loanAmount")
+//    let amount =/^[0-9]*$/;
+//   if( !loanAmount.value.match(amount)){
+//       document.getElementById("loanAmountError").style.visibility = "visible";
+//       return false;
+//    }
+//    else{
+//       document.getElementById("loanAmountError").style.visibility = "hidden";
+//       return false;
+//    }
+// }
 
 
 function isPurpose(){
@@ -185,29 +188,41 @@ function isPurpose(){
 
 function homeMobileValidation(e){
   
-let hPhone = document.getElementById("hPhone");
+let hPhonev = document.getElementById("hPhone");
 // let homePhone = /^(?!0+$)(\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4}))$/;
 // let homePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
 let homePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/;
- if (hPhone.value.trim() == "" ) {
+
+if (hPhonev.value.trim() == "" ) {
    document.getElementById("hPhoneError").innerHTML="Field should'nt be Empty"
    return false;
-   }  
-
-else if(hPhone.value.length < 10){
-   document.getElementById("hPhoneError").innerHTML="Phone no. should be of Length 9 digit"
-   return false;
-   }
-  
-   else if(!hPhone.value.match(homePhone)){
-      document.getElementById("hPhoneError").innerHTML="Characters are not allowed"
+   } 
+   
+else if(hPhonev.value.length < 10){
+      document.getElementById("hPhoneError").innerHTML="Phone no. should be of Length 10 digit"
       return false;
-   }
+      }
+else if(!hPhonev.value.match(homePhone)){
+      document.getElementById("hPhoneError").innerHTML="Character and all zeros digits not allowed";
+      return false;
+    }
 else {
    document.getElementById("hPhoneError").style.visibility = "hidden";
    return false;
 }
 } 
+// function homemobilecharValidation(){
+//    let homec = document.getElementById("hPhone")
+//    let homemobilePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
+//    if(!homec.value.match(homemobilePhone)){
+//       document.getElementById("hPhoneError").innerHTML="Character and all zeros digits not allowed";
+//       return false;
+//     }
+//     else {
+//       document.getElementById("hPhoneError").style.visibility = "hidden";
+//       return false;
+//    }
+// }
 function homeMobileMasking(){
 
    let ele = document.getElementById("hPhone");
@@ -226,21 +241,36 @@ function mobileValidation(){
 //  let mobilePhone = /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/;
  let mobilePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
 
- if (mPhone.value.trim() == "") {
-   
+if (mPhone.value.trim() == "") {
     document.getElementById("mphoneError").innerHTML="Field should'nt be Empty";
     return false;
     }
-    else if(!mPhone.value.match(mobilePhone)){
-      document.getElementById("mphoneError").innerHTML="Character not allowed";
+else if(mPhone.value.length<10){
+      document.getElementById("mphoneError").innerHTML="Phone no. should be of Length 10 digit"
       return false;
-   }
- 
- else {
+      }
+else if(!mPhone.value.match(mobilePhone)){
+      document.getElementById("mphoneError").innerHTML="Character and all zeros digits not allowed";
+      return false;
+    }
+else {
     document.getElementById("mphoneError").style.visibility = "hidden";
     return false;
  }
  } 
+
+//  function mobilecharValidation(){
+//    let mobilec = document.getElementById("mPhone")
+//    let mobilePhone = /^(?!(?:\D*0)+\D*$)\(?([0-9]{3})\)?[-. ]?[0-9]{3}[-. ]?[0-9]{4}$/
+//    if(!mobilec.value.match(mobilePhone)){
+//       document.getElementById("mphoneError").innerHTML="Character and all zeros digits not allowed";
+//       return false;
+//     }
+//     else {
+//       document.getElementById("mphoneError").style.visibility = "hidden";
+//       return false;
+//    }
+//  }
 
  function mobileMasking(){
 
@@ -439,13 +469,14 @@ function empMobileMasking(){
  } 
 
 
+
 function incomeValidation(){
 
    let dollarUS = Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
     });
-    let incomeval =/^[0-9]*$/;
+    let incomeval =/^[+-]?((\d+(\.\d*)?)|(\.\d+))$/;
     let incomevalidation = document.getElementById("aIncome")
 if(incomevalidation.value.match(incomeval)){
     //var currency = document.getElementById("lamount").value;
@@ -453,14 +484,18 @@ if(incomevalidation.value.match(incomeval)){
     let incomeAmount2 = incomeAmount1.replace("$", "");
     let incomeAmount = incomeAmount2.replace(",", "");
     document.getElementById("aIncome").value = dollarUS.format(incomeAmount);
-    if(incomeAmount <= 0 || incomeAmount == "" || incomeAmount > 10000000){
+    if(incomeAmount <= 0.0  || incomeAmount > 10000000.0){
       document.getElementById("annualIncome").innerHTML="*Amount should be >=0 and <=10000000";
     }
     else{
       document.getElementById("annualIncome").style.visibility = "hidden";
       return false;
-    }    
-}
+    }  
+   }
+else if (incomevalidation.value.trim() ==""){
+      document.getElementById("annualIncome").innerHTML="Field should'nt be empty"
+   }  
+
 else{
    document.getElementById("annualIncome").innerHTML= "*Characters and special characters is not allowed";
       return false;
