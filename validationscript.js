@@ -283,51 +283,138 @@ else {
    document.getElementById("mPhone").value = finalVal;
  }
 
+ function dobValidate() {
+  
+      var userinput = document.getElementById("DOB").value;  
+      var dob = new Date(userinput);  
+      if(userinput==null || userinput=='') {  
+        document.getElementById("DOBError").innerHTML = "**Choose a date please!";    
+        return false;   
+      } 
+      
+     else if (!userinput==""){  
+        
+      //calculate month difference from current date in time  
+      let month_diff = Date.now() - dob.getTime();  
+        
+      //convert the calculated difference in date format  
+      let age_dt = new Date(month_diff);   
+        
+      //extract year from date      
+      let year = age_dt.getUTCFullYear();  
+        
+      //now calculate the age of the user  
+      let age = Math.abs(year - 1970);  
 
- function DOB() {
-
-   let lblError = document.getElementById("DOBError");
- 
-   //Get the date from the TextBox.
-   let dateString = document.getElementById("DOB").value;
-   let regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
-
-   //Check whether valid dd/MM/yyyy Date Format.
-   if(dateString.value.trim()==""){
-      document.getElementById("DOBError").innerHTML="Field should'nt be empty"
-      return false
-   }
-   else if (dateString.value.match(regex)) {
-       let parts = dateString.split("/");
-       let dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
-       let dtCurrent = new Date();
-       document.getElementById("DOBError").innerHTML="Eligibility 18 years ONLY."
-      // lblError.innerHTML = "Eligibility 18 years ONLY."
-       if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+         if(age < 18){
+         document.getElementById("DOBError").innerHTML = "**Age cannot be less then 18";    
+        return false; 
+         }
+         else if(age > 60){
+            document.getElementById("DOBError").innerHTML = "**Age cannot be more then 60";    
+           return false; 
+            }
+         else{
+            document.getElementById("DOBError").innerHTML = "";    
            return false;
-       }
-
-       if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
-
-           //CD: 11/06/2018 and DB: 15/07/2000. Will turned 18 on 15/07/2018.
-           if (dtCurrent.getMonth() < dtDOB.getMonth()) {
-               return false;
-           }
-           if (dtCurrent.getMonth() == dtDOB.getMonth()) {
-               //CD: 11/06/2018 and DB: 15/06/2000. Will turned 18 on 15/06/2018.
-               if (dtCurrent.getDate() < dtDOB.getDate()) {
-                   return false;
-               }
-           }
-       }
-       document.getElementById("DOBError").innerHTML="";
-       return true;
-   } else {
-      // lblError.innerHTML = "Enter date in dd/MM/yyyy format ONLY."
-       document.getElementById("DOBError").innerHTML="Enter date in dd/MM/yyyy format ONLY."
-       return false;
-   }   
+         }
+      }
  }
+        
+//    let val = document.getElementById("DOB").value;
+//    let TODAY = new Date(Date.now());
+// let EIGHTEEN_YEARS_BACK = new Date(new Date(TODAY).getDate() + "/" + new Date(TODAY).getMonth() + "/" + (new Date(TODAY).getFullYear() - 18));
+// let USER_INPUT = new Date(val);
+// // Validate Now
+// let result = EIGHTEEN_YEARS_BACK > USER_INPUT
+// // if(val.value.trim()=""){
+// //    document.getElementById("DOBError").innerHTML="Field should'nt be empty.";
+// //    return false;
+// // }
+//  if (result < 18){
+//    document.getElementById("DOBError").innerHTML="Age cannot be less than 18.";
+//   return false;
+// }
+// else if (result >= 60){
+//    document.getElementById("DOBError").innerHTML="Age cannot be more than 60.";
+//   return false;
+// }
+// else 
+// {
+//    document.getElementById("DOBError").innerHTML="";
+//    return false;
+// }
+   // let today = new Date();
+   // let nowyear = today.getFullYear();
+   // let nowmonth = today.getMonth();
+   // let nowday = today.getDate();
+   // let b = document.getElementById("DOB").value;
+   // let birth = new Date(b);
+   // let birthyear = birth.getFullYear();
+   // let birthmonth = birth.getMonth();
+   // let birthday = birth.getDate();
+   // let age = nowyear - birthyear;
+   // let age_month = nowmonth - birthmonth;
+   // let age_day = nowday - birthday;
+
+
+   // if (age > 100) {
+   //    document.getElementById("DOBError").innerHTML="Age cannot be more than 100 Years.Please enter correct age";
+   //    return false;
+   // }
+   // if (age_month < 0 || (age_month == 0 && age_day < 0)) {
+   //     age = parseInt(age) - 1;
+   // }
+   // if ((age == 18 && age_month <= 0 && age_day <= 0) || age < 18) {
+   //    document.getElementById("DOBError").innerHTML="Age should be more than 18 years.Please enter a valid Date of Birth";
+   //    return false;
+   // }
+
+
+//  function DOB() {
+
+//    let lblError = document.getElementById("DOBError");
+ 
+//    //Get the date from the TextBox.
+//    let dateString = document.getElementById("DOB").value;
+//    let regex = /(((0|1)[0-9]|2[0-9]|3[0-1])\/(0[1-9]|1[0-2])\/((19|20)\d\d))$/;
+
+//    //Check whether valid dd/MM/yyyy Date Format.
+//    if(dateString.value.trim()==""){
+//       document.getElementById("DOBError").innerHTML="Field should'nt be empty"
+//       return false
+//    }
+//    else if (dateString.value.match(regex)) {
+//        let parts = dateString.split("/");
+//        let dtDOB = new Date(parts[1] + "/" + parts[0] + "/" + parts[2]);
+//        let dtCurrent = new Date();
+//        document.getElementById("DOBError").innerHTML="Eligibility 18 years ONLY."
+//       // lblError.innerHTML = "Eligibility 18 years ONLY."
+//        if (dtCurrent.getFullYear() - dtDOB.getFullYear() < 18) {
+//            return false;
+//        }
+
+//        if (dtCurrent.getFullYear() - dtDOB.getFullYear() == 18) {
+
+//            //CD: 11/06/2018 and DB: 15/07/2000. Will turned 18 on 15/07/2018.
+//            if (dtCurrent.getMonth() < dtDOB.getMonth()) {
+//                return false;
+//            }
+//            if (dtCurrent.getMonth() == dtDOB.getMonth()) {
+//                //CD: 11/06/2018 and DB: 15/06/2000. Will turned 18 on 15/06/2018.
+//                if (dtCurrent.getDate() < dtDOB.getDate()) {
+//                    return false;
+//                }
+//            }
+//        }
+//        document.getElementById("DOBError").innerHTML="";
+//        return true;
+//    } else {
+//       // lblError.innerHTML = "Enter date in dd/MM/yyyy format ONLY."
+//        document.getElementById("DOBError").innerHTML="Enter date in dd/MM/yyyy format ONLY."
+//        return false;
+//    }   
+//  }
 
 
    // let dob = document.getElementById("DOB")

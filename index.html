@@ -116,12 +116,12 @@
     <div class="col-lg-4">
         <div class="form-group">
             <label style="margin: 0 0 10px 0; font-size: 20px;" >Date of Birth</label>
-            <input type="text"
+            <input type="date"
             id="DOB"
             name="DOB"
             style="width:350px;"
             placeholder="DD/MM/YYYY"
-            onblur="DOB()"
+            onblur="dobValidate()"
             maxlength="60"
             class="form-group"
             required />
