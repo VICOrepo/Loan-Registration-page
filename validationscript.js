@@ -353,12 +353,12 @@ else {
    let age = Math.abs(year - 1970);  
 
       if(age < 18){
-      document.getElementById("rDateError").innerHTML = "**Age cannot be less than 18";
+      document.getElementById("rDateError").innerHTML = "*Date should be greater than 18 years";
       document.getElementById("rDateError").style.visibility = "visible";  
      return false; 
       }
       else if(age > 60){
-         document.getElementById("rDateError").innerHTML = "**Age cannot be more than 60";  
+         document.getElementById("rDateError").innerHTML = "**date should be less than 60 years";  
          document.getElementById("rDateError").style.visibility = "visible";    
         return false; 
          }
