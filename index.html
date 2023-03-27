@@ -33,7 +33,6 @@
             style="width:400px;"
             id="loanAmount"
             onblur="currencyMasking()"
-             
             maxlength="10"
             required/>
             <span id="loanAmountError" style="color: red; "></span>
@@ -48,6 +47,7 @@
             onblur="isPurpose()"
             id="loanPurpose"
             maxlength="150"
+            minlength="5"
             required/>
             <span id="loanPurposeError" style="color: red; "></span>
            </div>
@@ -75,6 +75,7 @@
             placeholder="E.g Max"
             onblur="firstNameValidation()"
             maxlength="40"
+            minlength="2"
             class="form-group"
             required />
             <span id="firstnameError" style="color: red;"></span>
@@ -90,6 +91,7 @@
             style="width:350px;"
             placeholder="E.g. Mow (optional)"
             maxlength="40"
+            minlength="2"
             class="form-group"
              /><span id="middlenameError" style="color: red;"></span>
             </div>
@@ -104,13 +106,14 @@
             placeholder="E.g, Lax"
             onblur="lastNameValidation()"
             maxlength="40"
+            minlength="2"
             class="form-group"
             required />
             <span id="lastnameError" style="color: red;"></span>
         </div>
     </div>
  </div>
-
+<br>
 
  <div class="row">
     <div class="col-lg-4">
@@ -146,6 +149,7 @@
     </div>
     
  </div>
+ <br>
  <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
@@ -199,7 +203,7 @@
     </div>
  </div>
  <br>
-                                          <!-- What is your home address  -->
+        <br>                                  <!-- What is your home address  -->
  <div class="row">
     <div class="col-lg-12 text-center">
         <h3 style="font-weight:bold; margin-bottom: 30px;">What is your home address</h3>
@@ -209,7 +213,7 @@
  <div class="row">
     <div class="col-lg-4">
        <div class="form-group">
-        <label for="loanAmount" style="margin: 0 0 10px 0; font-size: 20px;">Street Address 1</label>
+        <label  style="margin: 0 0 10px 0; font-size: 20px;">Street Address 1</label>
         <input type="text"
         placeholder="Address"
         class="form-group"
@@ -224,7 +228,7 @@
        <div class="form-group">
         <label for="loanPurpose" style="margin: 0 0 10px 0; font-size: 20px;">Street Address 2</label>
         <input type="text"
-        placeholder="Address"
+        placeholder="Address(optional)"
         class="form-group"
         onblur="address2Validation()"
         style="width:500px;"
@@ -349,10 +353,11 @@
             <input type="date"
             id="rNO"
             name="rNO"
+            onblur="resDateValidation()"
             style="width:350px;"
             placeholder="Residence Date"
             class="form-group"
-             />
+             /><span id="rDateError" style="color: red;"></span>
             
         </div>
     </div>
@@ -388,7 +393,7 @@
             id="aIncome"
             name="aIncome"
             style="width:350px;"
-            placeholder="It should be less then 1M$"
+            placeholder="It should be less than $1M"
             onblur="incomeValidation()"
             onkeypress="income()"
             maxlength="40"
@@ -413,7 +418,7 @@
     </div>
     
  </div>
-
+<br>
  <div class="row">
     <div class="col-lg-4">
         <div class="form-group">
@@ -442,7 +447,7 @@
             maxlength="10"
             class="form-group"
             required
-             /><span id="empPhoneError" style="color: red;visibility: hidden;">*Phone No. must be in Numeric</span>
+             /><span id="empPhoneError" style="color: red;"></span>
              
     </div>
     
