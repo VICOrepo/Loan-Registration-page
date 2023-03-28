@@ -66,14 +66,15 @@
 
  <div class="row">
     <div class="col-lg-4">
-        <div class="form-group">
+        <div class="form-group"> 
             <label style="margin: 0 0 10px 0; font-size: 20px;" > First Name:</label>
             <input type="text"
             id="firstName"
             name="firstname"
             style="width:350px;"
             placeholder="E.g Max"
-            onblur="firstNameValidation()"
+
+            onblur="firstNameValidation(),toPascalCase()"
             maxlength="40"
             minlength="2"
             class="form-group"
@@ -464,7 +465,7 @@
  </form>
 </div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="validationscript.js"></script>
 </body>
 </html>

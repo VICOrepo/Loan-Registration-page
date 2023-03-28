@@ -397,6 +397,60 @@ else {
 }
  }
 
+//  const toPascalCase = str => (str.match(/[a-zA-Z0-9]+/g) || []).map(w => `${w.charAt(0).toUpperCase()}${w.slice(1)}`).join('');
+
+ //solution-4
+//  function toPascalCase() {
+//    let fname = document.getElementById("firstName")
+//    return `${fname}`
+//      .toLowerCase()
+//      .replace(new RegExp(/[-_]+/, 'g'), ' ')
+//      .replace(new RegExp(/[^\w\s]/, 'g'), '')
+//      .replace(
+//        new RegExp(/\s+(.)(\w*)/, 'g'),
+//        ($1, $2, $3) => `${$2.toUpperCase() + $3}`
+//      )
+//      .replace(new RegExp(/\w/), s => s.toUpperCase());
+//  }
+ //solution-1
+//  const toPascalCase = document.getElementById("firstName") =>
+//  str.replace(/\w\S*/g,m => m.charAt(0).toUpperCase() +m.substr(1).toLowerCase());
+
+//solution-2
+// function toPascalCase() {
+//    let str = document.getElementById("firstName")
+//    let regfirst = /\w\S*/g
+//     let res = str.match(regfirst)
+//     .map(x => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase())
+//     .join('');
+//     return res;
+// }
+
+// solution-3
+// function toPascalCase(){
+//    let fname = document.getElementById("firstName")
+//    return (' ' + fname).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => {
+//        return chr.toUpperCase()});
+// }
+function toPascalCase(){
+  let input = document.getElementById("firstName");
+  let str = input.value; 
+ 
+  let word =str.split(' ').map(item => 
+   item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+   input.value = word;
+   
+}
+
+// function toPascalCase(){
+//    let fname = document.getElementById("firstName")
+//    let words = fname.split(' ')
+//    for(let char of words){
+//       words[words.indexof(char)] = char.charAt(0).toUpperCase() + char.slice(1);
+//    }
+//    return words.join(' ');
+// }
+
 function firstNameValidation(){
    let firstName = document.getElementById("firstName")
    let name = /^[a-zA-Z ]*$/;
@@ -445,6 +499,8 @@ function lastNameValidation(){
       return false;
    }
 }
+
+
 function middleNameValidation(){
    let middleName = document.getElementById("middleName")
    let middlen = /^[a-zA-Z ]*$/;
