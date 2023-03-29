@@ -251,7 +251,7 @@
             id="city"
         placeholder="e.g,Los Angeles "
         class="form-group"
-        onblur="cityValidation()"
+        onblur="cityValidation(),toPascalCase4()"
         style="width:350px;"
         maxlength="30"
        required /><span id="cityError" style="color: red;"></span>

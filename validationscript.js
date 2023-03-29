@@ -564,7 +564,15 @@ function empNameValidation(){
       return false;
    }
 }
-
+function toPascalCase4(){
+   let input = document.getElementById("city");
+   let str = input.value; 
+  
+   let word =str.split(' ').map(item => 
+    item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+    input.value = word;
+    
+ }
 function cityValidation(){
    let cityVal = document.getElementById("city")
    let regCity = /^[a-zA-Z ]*$/;
