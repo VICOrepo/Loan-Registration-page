@@ -475,7 +475,15 @@ function firstNameValidation(){
       return false;
    }
 }
-
+function toPascalCase1(){
+   let input = document.getElementById("lastName");
+   let str = input.value; 
+  
+   let word =str.split(' ').map(item => 
+    item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+    input.value = word;
+    
+ }
 function lastNameValidation(){
    let lastName = document.getElementById("lastName")
    let lastn = /^[a-zA-Z ]*$/;
@@ -499,7 +507,15 @@ function lastNameValidation(){
       return false;
    }
 }
-
+function toPascalCase2(){
+   let input = document.getElementById("middleName");
+   let str = input.value; 
+  
+   let word =str.split(' ').map(item => 
+    item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+    input.value = word;
+    
+ }
 
 function middleNameValidation(){
    let middleName = document.getElementById("middleName")
@@ -520,7 +536,15 @@ function middleNameValidation(){
       return false;
    }
 }
-
+function toPascalCase3(){
+   let input = document.getElementById("empName");
+   let str = input.value; 
+  
+   let word =str.split(' ').map(item => 
+    item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()).join(' ');
+    input.value = word;
+    
+ }
 function empNameValidation(){
    let empNameVal = document.getElementById("empName")
    // let regEmp = /^[A-Za-z0-9]*$/;
